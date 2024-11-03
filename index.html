@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Argen Server</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/font-awesome.css">
+    <script src="includes/jquery.js"></script>
+    <script src="includes/slider.js"></script>
+</head>
+
+<body>
+    <audio id="music" autoplay>
+        <source src="music/random_music.ogg" type="audio/ogg">
+    </audio>
+
+    <div id="background">
+        <div id="bg1"></div>
+        <div id="bg2"></div>
+        <div id="bg3"></div>
+        <div id="bg4"></div>
+    </div>
+
+    <div class="content">
+        <div class="top-box">
+            <img src="images/logo.png" class="logo" style="margin-top: 10px; margin-left: -90px;">
+        </div>
+
+        <div class="left-side">
+            <div class="top-left-box"></div>
+
+            <div class="middle-left-box">
+                <p class="middle-left-box-text">
+                    Welcome to this server. We here at this server look forward to roleplay and assist you if needed. To call an admin, use the @ command and an admin will arrive to you shortly.
+                </p>
+                <p class="middle-left-box-text">
+                    In order for you to establish a full character developing, please direct yourself to www.coolgaming.com and you will see a separate section of the forum by the name of "Guides".
+                </p>
+                <p class="middle-left-box-text">
+                    The server was made in 2009 and has been run by the original owner ever since. With distinctive and rewarding management he has built up 10 servers and recruited almost 30 administrators.
+                </p>
+            </div>
+
+            <div class="bottom-left-box"></div>
+        </div>
+
+        <div class="middle-box">
+            <p class="box-title">Server Rules</p>
+            <hr class="blue-line2">
+            <!-- Server rules in table format -->
+            <table class="server-info-table" style="width:100%">
+                <tr><td style="width:15%"><div class="server-rule-number">1.</div></td><td style="width:85%">You may not use your weapon unless needed.</td></tr>
+                <tr><td><div class="server-rule-number">2.</div></td><td>Using the props in order to break the listed rules is not permitted.</td></tr>
+                <tr><td><div class="server-rule-number">3.</div></td><td>Using your physgun as a laserpointer is not allowed.</td></tr>
+                <tr><td><div class="server-rule-number">4.</div></td><td>Do not go up on the rooftops by building contraptions.</td></tr>
+                <tr><td><div class="server-rule-number">5.</div></td><td>Killing without a reason will lead to a permanent ban.</td></tr>
+                <tr><td><div class="server-rule-number">6.</div></td><td>If a gun is pointed at you, fear it at all times.</td></tr>
+                <tr><td><div class="server-rule-number">7.</div></td><td>Only 2 contrabands in a base at once for equality.</td></tr>
+            </table>
+        </div>
+
+        <div class="right-side">
+            <div class="top-right-box">
+                <div class="avatar">
+                    <img class="avatar-img" src="path_to_avatar_image.png" />
+                </div>
+                <p class="persona-name">PlayerName</p>
+                <p class="steam-id">STEAM_0:X:XXXXXX</p>
+            </div>
+            <div class="bottom-right-box">
+                <p class="box-title">Server Information</p>
+                <hr class="blue-line">
+                <table class="server-info-table1" style="width:100%">
+                    <tr><td style="width:25%"><div class="server-info-icon1"><i class="fa fa-inbox"></i></div></td><td style="width:75%"><div id="server">Server Name</div></td></tr>
+                    <tr><td><div class="server-info-icon1"><i class="fa fa-gamepad"></i></div></td><td><div id="gamemode">Server Gamemode</div></td></tr>
+                    <tr><td><div class="server-info-icon1"><i class="fa fa-map-marker"></i></div></td><td><div id="map">Server Map</div></td></tr>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        $('#background').cycle({
+            fx: 'fade',
+            speed: 2000,
+            timeout: 4000
+        });
+
+        $(document).ready(function () {
+            const music = document.getElementById("music");
+            music.volume = 0.2;
+            music.play();
+        });
+
+        function GameDetails(servername, serverurl, mapname, maxplayers, steamid, gamemode) {
+            document.getElementById("gamemode").innerHTML = gamemode;
+            document.getElementById("server").innerHTML = servername;
+            document.getElementById("map").innerHTML = mapname;
+        }
+
+        (function () {
+            const quotes = $(".middle-left-box-text");
+            let quoteIndex = -1;
+
+            function showNextQuote() {
+                ++quoteIndex;
+                quotes.eq(quoteIndex % quotes.length)
+                    .fadeIn(1000)
+                    .delay(5000)
+                    .fadeOut(1000, showNextQuote);
+            }
+
+            showNextQuote();
+        })();
+    </script>
+</body>
+</html>
